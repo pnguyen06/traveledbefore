@@ -1,5 +1,6 @@
 class ChecksController < ApplicationController
   before_action :set_check, only: [:show, :edit, :update, :destroy]
+  before_action :set_place
   before_action :authenticate_user!, except: [:index, :show]
 
   # GET /checks
@@ -23,8 +24,9 @@ class ChecksController < ApplicationController
   # POST /checks
   def create
     @check = current_user.checks.build(check_params)
+    @check.place_id = @place.id
     if @check.save
-      redirect_to @check, notice: 'Check was successfully created.'
+      redirect_to @place, notice: 'Check was successfully created.'
     else
       render :new
     end
@@ -33,7 +35,7 @@ class ChecksController < ApplicationController
   # PATCH/PUT /checks/1
   def update
     if @check.update(check_params)
-      redirect_to @check, notice: 'Check was successfully updated.'
+      redirect_to @place, notice: 'Check was successfully updated.'
     else
       render :edit
     end
@@ -50,6 +52,10 @@ class ChecksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_check
       @check = Check.find(params[:id])
+    end
+
+    def set_place
+      @place = Place.find(params[:place_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -10,6 +10,7 @@ class PlacesController < ApplicationController
 
   # GET /places/1
   def show
+    @checks = Check.where(place_id: @place.id).order("created_at DESC")
   end
 
   # GET /places/new

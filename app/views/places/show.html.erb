@@ -4,6 +4,21 @@
   <%= @place.name %>
 </p>
 
+<% if @checks.blank? %>
+	No Checks
+<% else %>
+	<% @checks.each do |check| %>
+		<p><%= check.comment %></p>
+		<p><%= check.guide %></p>
+	<% end %>
+<% end %>
+
+
+
+
+
+<%= link_to "Write a new Check", new_place_check_path(@place) %>
+
 <% if @place.user == current_user %>
 	<%= link_to 'Edit', edit_place_path(@place) %>
 <% end %>
