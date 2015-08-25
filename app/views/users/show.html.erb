@@ -2,9 +2,11 @@
 
 <table>
 	<tbody>
-		<% @place.each do |place| %>
+		<% @check.each do |check| %>
+			<% place = Place.find(check.place_id) %>
 			<tr>
-			  <td><%= place.name %></td>
+				<td><%= link_to place.name, place %></td>
+			  <td><%= check.comment %></td>
 			</tr>
 		<% end %>
 	</tbody>

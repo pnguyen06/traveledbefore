@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @place = @user.places
+    @check = @user.checks
 
     respond_to do |format|
         format.html # show.html.erb
