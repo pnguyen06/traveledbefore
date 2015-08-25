@@ -1,6 +1,6 @@
 class ChecksController < ApplicationController
   before_action :set_check, only: [:show, :edit, :update, :destroy]
-  before_action :set_place
+  #before_action :set_place
   before_action :authenticate_user!, except: [:index, :show]
 
   # GET /checks
@@ -24,9 +24,9 @@ class ChecksController < ApplicationController
   # POST /checks
   def create
     @check = current_user.checks.build(check_params)
-    @check.place_id = @place.id
+    #@check.place_id = @place.id
     if @check.save
-      redirect_to @place, notice: 'Check was successfully created.'
+      redirect_to checks_path, notice: 'Check was successfully created.'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class ChecksController < ApplicationController
   # PATCH/PUT /checks/1
   def update
     if @check.update(check_params)
-      redirect_to @place, notice: 'Check was successfully updated.'
+      redirect_to checks_path, notice: 'Check was successfully updated.'
     else
       render :edit
     end
@@ -45,7 +45,7 @@ class ChecksController < ApplicationController
   # DELETE /checks/1.json
   def destroy
     @check.destroy
-    redirect_to checks_url, notice: 'Check was successfully destroyed.'
+    redirect_to root_path, notice: 'Check was successfully destroyed.'
   end
 
   private
@@ -54,12 +54,12 @@ class ChecksController < ApplicationController
       @check = Check.find(params[:id])
     end
 
-    def set_place
-      @place = Place.find(params[:place_id])
-    end
+    #def set_place
+    #  @place = Place.find(params[:place_id])
+    #end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def check_params
-      params.require(:check).permit(:comment, :guide)
+      params.require(:check).permit(:place_id, :comment, :guide)
     end
 end
