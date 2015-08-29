@@ -6,4 +6,5 @@
 
   has_many :places
   has_many :checks, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 end

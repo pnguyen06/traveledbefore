@@ -12,7 +12,11 @@
   <% end %>
   <div class="form-group">
     <%= f.label :place_id %><br>
-    <%= f.collection_select :place_id, Place.where.not(id: current_user.checks.where.not(user_id: nil).pluck(:place_id)), :id, :name, {:prompt => "Select Place"}, {class: "form-control", :required => true} %>
+    <% if @place.blank? %>
+      <%= f.collection_select :place_id, Place.where.not(id: current_user.checks.where.not(user_id: nil).pluck(:place_id)), :id, :name, {:prompt => "Select Place"}, {class: "form-control", :required => true} %>
+    <% else %>
+      Boop
+    <% end %>
   </div>
   <div class="form-group">
     <%= f.label :comment %><br>

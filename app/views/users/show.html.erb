@@ -13,3 +13,9 @@
 </table>
 <br />
 <%= link_to "Write a new Check", new_check_path() %>
+<br /><br />
+<% if current_user.favorites.empty? %>
+	<%= link_to "Choose 3 new Favorites", new_favorite_path() %>
+<% else %>
+	<%= link_to 'Edit', edit_favorite_path(current_user.favorites.last) %>
+<% end %>

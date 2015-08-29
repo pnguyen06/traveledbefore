@@ -1,0 +1,32 @@
+
+<h1>Listing Favorites</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Place 1</th>
+      <th>Place 2</th>
+      <th>Place 3</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @favorites.each do |favorite| %>
+      <tr>
+        <td><%= favorite.user_id %></td>
+        <td><%= favorite.place1 %></td>
+        <td><%= favorite.place2 %></td>
+        <td><%= favorite.place3 %></td>
+        <td><%= link_to 'Show', favorite %></td>
+        <td><%= link_to 'Edit', edit_favorite_path(favorite) %></td>
+        <td><%= link_to 'Destroy', favorite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Favorite', new_favorite_path %>
