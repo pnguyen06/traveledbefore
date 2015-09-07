@@ -24,6 +24,14 @@
     <%= f.file_field :image_banner, class: "form-control" %>
   </div>
   <div class="form-group">
+    <%= f.label :bgcolor %><br>
+    <%= f.text_field :bgcolor, :maxlength => 6, :size => 6, class: "" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :textcolor %><br>
+    <%= f.text_field :textcolor, :maxlength => 6, :size => 6, class: "" %>
+  </div>
+  <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
