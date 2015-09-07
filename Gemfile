@@ -14,6 +14,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the A
 # gem 'capistrano-rails', group: :development # Use Capistrano for deployment
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'paperclip', '~> 4.3'
 
 group :development, :test do
 	gem 'sqlite3' # Use sqlite3 as the database for Active Record

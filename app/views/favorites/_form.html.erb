@@ -13,15 +13,14 @@
 
   <div class="form-group">
     <%= f.label :place1 %><br>
-    <%= f.text_field :place1, class: "form-control" %>
+    <%= f.collection_select :place1, Place.where(id: current_user.checks.where.not(user_id: nil).pluck(:place_id)), :name, :name, {:prompt => "Select Place"}, {class: "form-control", :required => true} %>
   </div>
   <div class="form-group">
     <%= f.label :place2 %><br>
-    <%= f.text_field :place2, class: "form-control" %>
-  </div>
+    <%= f.collection_select :place2, Place.where(id: current_user.checks.where.not(user_id: nil).pluck(:place_id)), :name, :name, {:prompt => "Select Place"}, {class: "form-control", :required => true} %>  </div>
   <div class="form-group">
     <%= f.label :place3 %><br>
-    <%= f.text_field :place3, class: "form-control" %>
+    <%= f.collection_select :place3, Place.where(id: current_user.checks.where.not(user_id: nil).pluck(:place_id)), :name, :name, {:prompt => "Select Place"}, {class: "form-control", :required => true} %>
   </div>
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>

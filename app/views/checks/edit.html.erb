@@ -1,33 +1,35 @@
-<h1>Editing Check</h1>
+<div class="container">
+  <h1>Editing Check</h1>
 
-<%= form_for [@place, @check] do |f| %>
-  <% if @check.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@check.errors.count, "error") %> prohibited this check from being saved:</h2>
+  <%= form_for [@place, @check] do |f| %>
+    <% if @check.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@check.errors.count, "error") %> prohibited this check from being saved:</h2>
 
-      <ul>
-      <% @check.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @check.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :place_id %><br>
+      <%= @check.place.name %>
+    </div>
+    <div class="form-group">
+      <%= f.label :comment %><br>
+      <%= f.text_area :comment, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :guide %><br>
+      <%= f.check_box :guide, class: "form-control" %>
+    </div>
+    <div class="actions">
+      <%= f.submit class: "btn btn-primary" %>
     </div>
   <% end %>
-  <div class="form-group">
-    <%= f.label :place_id %><br>
-    <%= @check.place.name %>
-  </div>
-  <div class="form-group">
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :guide %><br>
-    <%= f.check_box :guide, class: "form-control" %>
-  </div>
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary" %>
-  </div>
-<% end %>
 
-<%= link_to 'Back', checks_path %>
-<%= link_to 'Destroy', @check, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Back', checks_path %>
+  <%= link_to 'Destroy', @check, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

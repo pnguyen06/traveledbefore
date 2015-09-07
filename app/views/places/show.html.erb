@@ -1,26 +1,32 @@
+<div class="jumbotron country_jumbo">
+	<div class="container">
+		<%= image_tag("countries/austria.png", :size => "200x36", :title => @place.name) %>
+	</div>
+</div>
+<div class="container">
+	<h1><%= @place.name %></h1>
 
-<h1><%= @place.name %></h1>
-
-<% if @checks.blank? %>
-	No Checks
-<% else %>
-	<% @checks.each do |check| %>
-		<% user = User.find(check.user_id) %>
-		<p><%= check.comment %> <%= check.guide %> by <%= link_to user.name, user %> 
-			<% if check.user == current_user %>
-				<%= link_to "Edit", edit_check_path(check) %>
-			<% end %>
-		</p>
+	<% if @checks.blank? %>
+		No Checks
+	<% else %>
+		<% @checks.each do |check| %>
+			<% user = User.find(check.user_id) %>
+			<p><%= check.comment %> <%= check.guide %> by <%= link_to user.name, user %> 
+				<% if check.user == current_user %>
+					<%= link_to "Edit", edit_check_path(check) %>
+				<% end %>
+			</p>
+		<% end %>
 	<% end %>
-<% end %>
 
 
 
 
 
-<%= link_to "Write a new Check", new_check_path() %>
+	<%= link_to "Write a new Check", new_check_path() %>
 
-<% if @place.user == current_user %>
-	<%= link_to 'Edit', edit_place_path(@place) %>
-<% end %>
-<%= link_to 'Back', places_path %>
+	<% if @place.user == current_user %>
+		<%= link_to 'Edit', edit_place_path(@place) %>
+	<% end %>
+	<%= link_to 'Back', places_path %>
+</div>
