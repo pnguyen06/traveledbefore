@@ -1,48 +1,53 @@
-<div class="container">
-	<% if @user.image? %>
-		<%= image_tag @user.image.url(:thumb) %>
-	<% else %>
-		Upload Image
-	<% end %>
-	<h1><%= @user.name %></h1>
-
-	<div class="row">
-		<div class="col-md-8">
-			<table>
-				<tbody>
-					<% @check.each do |check| %>
-						<% place = Place.find(check.place_id) %>
-						<tr>
-							<td><%= link_to place.name, place %></td>
-						  <td><%= check.comment %></td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
-		<div class="col-md-4">
-			<% if user_signed_in? && current_user == @user %>
-				<% if current_user.favorites.empty? %>
-					<%= link_to "Choose 3 new Favorites", new_favorite_path() %>
-				<% else %>
-					<% @favorite = current_user.favorites.last %>
-					<%= link_to @favorite.place1, Place.find_by(name: @favorite.place1) %>
-					<br />
-					<%= link_to @favorite.place2, Place.find_by(name: @favorite.place2) %>
-					<br />
-					<%= link_to @favorite.place3, Place.find_by(name: @favorite.place3) %>			
-					<%= link_to 'Edit', edit_favorite_path(@favorite) %>
+<div class="row">
+	<div class="col-md-4 center">
+		<% if @user.image? %>
+			<%= image_tag @user.image.url(:medium) %>
+		<% else %>
+			Upload Image
+		<% end %>
+	</div>
+	<div class="col-md-8">
+		<h1><%= @user.name %></h1>
+		<%= @user.bio %>
+	</div>
+</div>
+<br /><br />
+<div class="row">
+	<div class="col-md-8">
+		<table>
+			<tbody>
+				<% @check.each do |check| %>
+					<% place = Place.find(check.place_id) %>
+					<tr>
+						<td><%= link_to place.name, place %></td>
+					  <td><%= check.comment %></td>
+					</tr>
 				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-4">
+		<% if user_signed_in? && current_user == @user %>
+			<% if current_user.favorites.empty? %>
+				<%= link_to "Choose 3 new Favorites", new_favorite_path() %>
 			<% else %>
-				<% @favorite = @user.favorites.last %>
+				<% @favorite = current_user.favorites.last %>
 				<%= link_to @favorite.place1, Place.find_by(name: @favorite.place1) %>
 				<br />
 				<%= link_to @favorite.place2, Place.find_by(name: @favorite.place2) %>
 				<br />
-				<%= link_to @favorite.place3, Place.find_by(name: @favorite.place3) %>
+				<%= link_to @favorite.place3, Place.find_by(name: @favorite.place3) %>			
+				<%= link_to 'Edit', edit_favorite_path(@favorite) %>
 			<% end %>
-		</div>
+		<% else %>
+			<% @favorite = @user.favorites.last %>
+			<%= link_to @favorite.place1, Place.find_by(name: @favorite.place1) %>
+			<br />
+			<%= link_to @favorite.place2, Place.find_by(name: @favorite.place2) %>
+			<br />
+			<%= link_to @favorite.place3, Place.find_by(name: @favorite.place3) %>
+		<% end %>
 	</div>
-	<br />
-	<%= link_to "Write a new Check", new_check_path() %>
 </div>
+<br />
+<%= link_to "Write a new Check", new_check_path() %>

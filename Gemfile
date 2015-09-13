@@ -15,6 +15,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the A
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'paperclip', '~> 4.3'
+gem 'font-awesome-rails', '~> 4.4.0.0'
 
 group :development, :test do
 	gem 'sqlite3' # Use sqlite3 as the database for Active Record
