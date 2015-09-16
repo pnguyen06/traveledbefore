@@ -16,6 +16,10 @@
     <%= f.text_field :name, class: "form-control" %>
   </div>
   <div class="form-group">
+    <%= f.label :region %><br>
+    <%= f.select :region, ["Africa", "Antarctic", "Asia", "Caribbean", "Central America", "Europe", "Middle East", "North America","Pacific", "South America"], {}, class: "form-control" %>
+  </div>
+  <div class="form-group">
     <%= f.label :image_name %>
     <%= f.file_field :image_name, class: "form-control" %>
   </div>

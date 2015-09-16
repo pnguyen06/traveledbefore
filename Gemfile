@@ -7,6 +7,7 @@ gem 'coffee-rails', '~> 4.1.0' # Use CoffeeScript for .coffee assets and views
 # gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'jquery-rails' # Use jquery as the JavaScript library
 gem 'turbolinks' # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the API under doc/api.
 # gem 'bcrypt', '~> 3.1.7' # Use ActiveModel has_secure_password
@@ -16,6 +17,8 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'paperclip', '~> 4.3'
 gem 'font-awesome-rails', '~> 4.4.0.0'
+gem 'has_scope'
+gem 'masonry-rails'
 
 group :development, :test do
 	gem 'sqlite3' # Use sqlite3 as the database for Active Record

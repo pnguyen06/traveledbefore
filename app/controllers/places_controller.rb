@@ -2,10 +2,11 @@ class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  has_scope :by_region
 
   # GET /places
   def index
-    @places = Place.all
+    @places = apply_scopes(Place).all
   end
 
   # GET /places/1
@@ -60,6 +61,6 @@ class PlacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:name, :image_name, :image_banner, :bgcolor, :textcolor)
+      params.require(:place).permit(:name, :region, :image_name, :image_banner, :bgcolor, :textcolor)
     end
 end

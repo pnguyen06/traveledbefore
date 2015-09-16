@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913002251) do
+ActiveRecord::Schema.define(version: 20150913162836) do
 
   create_table "checks", force: :cascade do |t|
     t.text     "comment"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150913002251) do
     t.datetime "image_banner_updated_at"
     t.string   "bgcolor"
     t.string   "textcolor"
+    t.string   "region"
   end
 
   add_index "places", ["user_id"], name: "index_places_on_user_id"
