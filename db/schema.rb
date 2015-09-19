@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913162836) do
+ActiveRecord::Schema.define(version: 20150918233614) do
 
   create_table "checks", force: :cascade do |t|
     t.text     "comment"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150913162836) do
     t.string   "bgcolor"
     t.string   "textcolor"
     t.string   "region"
+    t.text     "tagline"
   end
 
   add_index "places", ["user_id"], name: "index_places_on_user_id"

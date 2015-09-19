@@ -1,17 +1,20 @@
+<% if @place.user == current_user %>
+	<div style="text-align: right;">
+		<%= link_to 'Edit', edit_place_path(@place) %>
+	</div>
+<% end %>
 <div class="jumbotron" style="background-color: #<%= @place.bgcolor %>; height: 300px;">
-	<div class="container center" style="color: #fff;">
+	<div class="container cabin" style="color: #fff;">
 		<!--<%= image_tag(@place.image_name, :height => "50", :title => @place.name) %>-->
-		<div class="cabin" style="letter-spacing: 4px;">
-			<h1><%= @place.name.upcase %></h1>
+		<div style="letter-spacing: 4px;">
+			<h2 style="text-decoration: underline;"><%= @place.name.upcase %></h2>
 		</div>
-		<div class="bitter">
-			Welcome to Austria! We have great beer.
-		</div>
+		<h2><%= @place.tagline %></h2>
 	</div>
 </div>
 
 <% if @checks.blank? %>
-	No Checks
+	No one has checked in here yet. <%= link_to "Want to be the first?", new_check_path() %>
 <% else %>
 	<% @checks.each do |check| %>
 		<% user = User.find(check.user_id) %>
@@ -21,15 +24,14 @@
 			<% end %>
 		</p>
 	<% end %>
+	<% if @checks.find_by_user_id(current_user.id).blank? %>
+		<%= link_to "Write a new Check", new_check_path() %>
+	<% end %>
 <% end %>
 
 
 
 
 
-<%= link_to "Write a new Check", new_check_path() %>
 
-<% if @place.user == current_user %>
-	<%= link_to 'Edit', edit_place_path(@place) %>
-<% end %>
-<%= link_to 'Back', places_path %>
+

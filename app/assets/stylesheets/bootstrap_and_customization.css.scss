@@ -24,3 +24,16 @@ $body-bg: #fafafa;
 	font-family: 'Bitter', serif;
 	font-weight: 400;
 }
+
+
+.nav-pills > li > a {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+@media (min-width: 979px) {
+ 
+  .nav-spacer {
+  	margin-left: 50px;
+  }
+}
